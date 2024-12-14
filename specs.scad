@@ -6,7 +6,8 @@ font = "xscale"; //["Liberation Sans", "Liberation Sans:style=Bold", "Liberation
 plate_thickness = 1;
 plate_height = 80;
 plate_width = 40;
-stegbreite = 1;
+bridge_width = 0.5;
+bevel_size = 1;
 
 font_size = 50;
 

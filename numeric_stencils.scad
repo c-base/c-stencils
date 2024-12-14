@@ -4,10 +4,12 @@ echo(version=version());
 
 include <specs.scad>;
 
-module render_stencils(number, border=10) {
+$fn = 32;
+
+module render_stencils(number, border=border) {
     // Loop to generate 10 plates
     for (i = [0:number]) {
-        plate_row= i>4 ? -plate_height - border : 0;
+        plate_row= i>4 ? plate_height + border : 0;
         n= i>4 ? i-5 : i;
         
         // Translate each plate to its position
@@ -95,5 +97,7 @@ module render_stencils(number, border=10) {
 }
 
 rotate([180,0,0]) {
-    render_stencils(9, 2);
+    translate([0, -2*(plate_height) - border, 0]) {
+        render_stencils(9, border);
+    }
 }

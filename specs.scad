@@ -8,6 +8,7 @@ plate_height = 80;
 plate_width = 40;
 bridge_width = 0.5;
 bevel_size = 1;
+border = 2;
 
 font_size = 50;
 

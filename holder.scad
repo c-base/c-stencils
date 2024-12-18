@@ -5,7 +5,7 @@ border = 2;
 fit = 0.2;
 holder_thickness = 15;
 
-render_stencils = true;
+render_stencils = false;
 
 translate([0, 0, -1]) {
     difference() {
@@ -18,10 +18,10 @@ translate([0, 0, -1]) {
                     translate([2*border-1, 2*border-2*fit, 1]) {
                         cube([(plate_width * 3)-0.5, plate_height+(4*fit), holder_thickness + 3]);
                         }            
-                    translate([2*border + 2, 2*border+1.5, 0.3]) {
+                    translate([2*border + 1.5, 2*border+1, 0.3]) {
                         cube([plate_width*3-5, 6.2, 2.5]);
                     }
-                    translate([2*border + 2, border + plate_height - 5.5, 0.3]) {
+                    translate([2*border + 1.5, border + plate_height - 5.5, 0.3]) {
                         cube([plate_width*3-5, 6.2, 2.5]);
                     }
                 }

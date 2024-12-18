@@ -16,45 +16,47 @@ module render_stencils(number, border=border) {
         translate([n * (plate_width + border), plate_row, 0]) {
             union() {
                 if (i == 0 || i == 4 || i == 6 || i == 8 || i == 9) {
-                    difference() {
-                        union() {
-                            // The bridges
-                            if (i == 0 || i == 6 || i == 8) { 
-                                translate([plate_width / 2 - bridge_width, font_size / 2, 0]) {
-                                    color("hotpink") {
-                                        cube([bridge_width*2, font_size/5, plate_thickness]);
+                    translate([0.35, 0, 0]){
+                        difference() {
+                            union() {
+                                // The bridges
+                                if (i == 0 || i == 6 || i == 8) { 
+                                    translate([plate_width / 2 - bridge_width, font_size / 2, 0]) {
+                                        color("hotpink") {
+                                            cube([bridge_width*2, font_size/5, plate_thickness]);
+                                        }
+                                    }
+                                }
+                                if (i == 4 || i == 6 || i == 8 || i == 9) {
+                                    translate([plate_width / 2 - bridge_width, font_size/1.45, 0]) {
+                                        color("hotpink") {
+                                            cube([bridge_width*2, font_size/5, plate_thickness]);
+                                        }
+                                    }
+                                }
+                                if (i == 0 || i== 8 || i == 9) {
+                                    translate([plate_width / 2 - bridge_width, font_size/1.06, 0]) {
+                                        color("hotpink") {
+                                            cube([bridge_width*2, font_size/8.33, plate_thickness]);
+                                        }
                                     }
                                 }
                             }
-                            if (i == 4 || i == 6 || i == 8 || i == 9) {
-                                translate([plate_width / 2 - bridge_width, font_size/1.45, 0]) {
-                                    color("hotpink") {
-                                        cube([bridge_width*2, font_size/5, plate_thickness]);
+                            rotate([90, 0, 180]) {
+                                translate([-plate_width/2+bridge_width, 0, 0]) {
+                                    linear_extrude(height=plate_height) {
+                                        polygon([[-bevel_size/2, 0], [0,bevel_size], [0, 0]]);
                                     }
                                 }
                             }
-                            if (i == 0 || i== 8 || i == 9) {
-                                translate([plate_width / 2 - bridge_width, font_size/1.06, 0]) {
-                                    color("hotpink") {
-                                        cube([bridge_width*2, font_size/8.33, plate_thickness]);
+                            rotate([90, 90, 180]) {
+                                translate([0, -plate_width/2-bridge_width, 0]) {
+                                    linear_extrude(height=plate_height) {
+                                        polygon([[-bevel_size, 0], [0,bevel_size/2], [0, 0]]);
                                     }
                                 }
-                            }
+                            }                    
                         }
-                        rotate([90, 0, 180]) {
-                            translate([-plate_width/2+bridge_width, 0, 0]) {
-                                linear_extrude(height=plate_height) {
-                                    polygon([[-bevel_size/2, 0], [0,bevel_size], [0, 0]]);
-                                }
-                            }
-                        }
-                        rotate([90, 90, 180]) {
-                            translate([0, -plate_width/2-bridge_width, 0]) {
-                                linear_extrude(height=plate_height) {
-                                    polygon([[-bevel_size, 0], [0,bevel_size/2], [0, 0]]);
-                                }
-                            }
-                        }                    
                     }
                 }
                 // The stencil base with number and slant

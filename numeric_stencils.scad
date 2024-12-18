@@ -64,7 +64,10 @@ module render_stencils(number, border=border) {
                         difference() {
                             cube([plate_width, plate_height, plate_thickness]);
                             translate([plate_width / 2, 4.5, -0.1]) {
-                                cylinder(h=0.8, d=5.1);
+                                cylinder(h=mag_depth, d=5.1);
+                            }
+                            translate([plate_width / 2, plate_height-4.5, -0.1]) {
+                                cylinder(h=mag_depth, d=5.1);
                             }
                         }
                     }
